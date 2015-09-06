@@ -11,20 +11,26 @@ require_once(dirname(__FILE__).'/Controller.php');
 
 class Admin extends Controller {
 
-    public static function login(){
-        require_once (dirname(__FILE__).'/../views/pages/Admin/Login.php');
+    public function index()
+    {
+        $this->getMenu()->setAdmin('index');
+        $this->display('pages/Admin/Index.php');
     }
 
-    public static function moderation(){
-        require_once (dirname(__FILE__).'/../views/pages/Admin/Moderation.php');
+    public function moderation(){
+        $this->getMenu()->setAdmin('moderation');
+        $this->display('pages/Admin/Moderation.php');
     }
 
-    public static function parties(){
-        require_once (dirname(__FILE__).'/../views/pages/Admin/Parties.php');
+    public function parties(){
+        $this->getMenu()->setAdmin('parties');
+        $this->display('pages/Admin/Parties.php');
     }
 
-    public static function utilisateurs(){
-        require_once (dirname(__FILE__).'/../views/pages/Admin/Utilisateurs.php');
+    public function utilisateurs(){
+        $this->getMenu()->setAdmin('utilisateurs');
+        $this->display('pages/Admin/Utilisateurs.php');
     }
+
 
 }

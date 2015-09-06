@@ -13,7 +13,7 @@ $action = 'index';
 if(!empty($_GET['page']) && preg_match('#^[a-zA-Z]+$#',$_GET['page'])) {
     $page = $_GET['page'];
 } else {
-    $page = 'Accueil';
+    $page = 'Admin';
 }
 if(!empty($_GET['action']) && preg_match('#^[a-zA-Z]+$#',$_GET['action'])) {
     $action = $_GET['action'];
