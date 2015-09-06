@@ -25,7 +25,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="navbar navbar-default">
                 <ul class="nav navbar-nav">
                     <?php foreach($menu as $item) { /** @var \fr\gilman\nj\MenuItem $item */ ?>
@@ -34,7 +34,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
             <?php if(\fr\gilman\nj\SessionBusiness::isConnected()) { ?>
                 <div class="col-sm-4 col-sm-offset-8">
                     <?php echo \fr\gilman\nj\SessionBusiness::getCookieSession()->getUtilisateur()->getNom(); ?> - <a href="<?php echo fr\gilman\nj\Conf::common()['urlAdmin']['base']; ?>/index.php?page=Admin&action=deco">Déconnexion</a>
