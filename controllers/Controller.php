@@ -28,10 +28,10 @@ class Controller
     public function __construct(Menu $menu)
     {
         $this->menu = $menu;
-        $this->data['BASE_URL'] = Conf::common()['url']['base'];
-        $this->data['JS_URL'] = Conf::common()['url']['js'];
-        $this->data['CSS_URL'] = Conf::common()['url']['css'];
-        $this->data['IMAGES_URL'] = Conf::common()['url']['images'];
+        $this->data['BASE_URL'] = Conf::common()['urlAdmin']['base'];
+        $this->data['JS_URL'] = Conf::common()['urlAdmin']['js'];
+        $this->data['CSS_URL'] = Conf::common()['urlAdmin']['css'];
+        $this->data['IMAGES_URL'] = Conf::common()['urlAdmin']['images'];
     }
 
     /**

@@ -5,10 +5,10 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <script src="<?php echo fr\gilman\nj\Conf::common()['url']['js']; ?>/jquery.js"></script>
-    <script src="<?php echo fr\gilman\nj\Conf::common()['url']['js']; ?>/pages/login.js"></script>
-    <link rel="stylesheet" href="<?php echo fr\gilman\nj\Conf::common()['url']['css']; ?>/main.css" />
-    <link rel="stylesheet" href="<?php echo fr\gilman\nj\Conf::common()['url']['css']; ?>/bootstrap.css" />
+    <script src="<?php echo fr\gilman\nj\Conf::common()['urlAdmin']['js']; ?>/jquery.js"></script>
+    <script src="<?php echo fr\gilman\nj\Conf::common()['urlAdmin']['js']; ?>/pages/login.js"></script>
+    <link rel="stylesheet" href="<?php echo fr\gilman\nj\Conf::common()['urlAdmin']['css']; ?>/main.css" />
+    <link rel="stylesheet" href="<?php echo fr\gilman\nj\Conf::common()['urlAdmin']['css']; ?>/bootstrap.css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,10 +37,10 @@
         <div class="col-md-8">
             <?php if(\fr\gilman\nj\SessionBusiness::isConnected()) { ?>
                 <div class="col-sm-4 col-sm-offset-8">
-                    <?php echo \fr\gilman\nj\SessionBusiness::getCookieSession()->getUtilisateur()->getNom(); ?> - <a href="<?php echo fr\gilman\nj\Conf::common()['url']['base']; ?>/index.php?page=Accueil&action=deco">Déconnexion</a>
+                    <?php echo \fr\gilman\nj\SessionBusiness::getCookieSession()->getUtilisateur()->getNom(); ?> - <a href="<?php echo fr\gilman\nj\Conf::common()['urlAdmin']['base']; ?>/index.php?page=Admin&action=deco">Déconnexion</a>
                     <?php if(\fr\gilman\nj\SessionBusiness::enPartie()) { ?>
                         <br />
-                        <a href="<?php echo fr\gilman\nj\Conf::common()['url']['base']; ?>/index.php?page=Accueil&action=retourAccueil">Retour accueil</a>
+                        <a href="<?php echo fr\gilman\nj\Conf::common()['urlAdmin']['base']; ?>/index.php?page=Admin&action=retourAccueil">Retour accueil</a>
                     <?php } ?>
                 </div>
             <?php } else { ?>
@@ -58,7 +58,7 @@
                                 <button class="btn btn-default" type="button" id="btLogin">Login</button>
                             </span>
                             <span class="input-group-btn">
-                                <a href="<?php echo fr\gilman\nj\Conf::common()['url']['base']; ?>/index.php?page=Accueil&action=inscription" class="btn btn-default" type="button">Inscription</a>
+                                <a href="<?php echo fr\gilman\nj\Conf::common()['urlAdmin']['base']; ?>/index.php?page=Admin&action=inscription" class="btn btn-default" type="button">Inscription</a>
                             </span>
                         </div>
                     </div>

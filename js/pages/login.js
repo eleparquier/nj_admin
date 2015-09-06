@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('#btLogin').on('click', function(e) {
         $.ajax({
             type: "POST",
-            url: BASE_URL + '/index.php?page=Accueil&action=login',
+            url: BASE_URL + '/index.php?page=Admin&action=login',
             data: {login:$('#login').val(),password:$('#password').val()},
             success: function(data) {
                 if(data.error != 0) {
