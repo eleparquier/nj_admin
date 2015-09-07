@@ -19,4 +19,9 @@ $(document).ready(function() {
             dataType: 'json'
         });
     });
+
+    CKEDITOR.instances['regles'].on('key', function(e) {
+        $('.groupBt').addClass('has-warning');
+        $('.groupBt').find('.help-block').html('Le texte a été mofifié');
+    });
 });
