@@ -48,6 +48,7 @@ class Admin extends Controller {
             $this->error("Vous devez être connecté pour voir cette page");
             return;
         }
+        $this->data['regles'] = TexteBusiness::getByCode('REGLES')->getTexte();
         $this->display('pages/Admin/Regles.php');
     }
 
@@ -85,10 +86,17 @@ class Admin extends Controller {
     public function modifRegles()
     {
         $ret = array('error'=>0, 'errorMsg'=>'');
-        if(!$this->checkDroit(Droit::ADMIN)) {
+        if(!isset($_POST['regles'])) {
             $ret['error'] = 1;
+            $ret['errorMsg'] = 'Champ regles obligatoire';
+        }
+        if(!$this->checkDroit(Droit::ADMIN)) {
+            $ret['error'] = 2;
             $ret['errorMsg'] = 'Utilisateur non admin';
         }
+        $texte = TexteBusiness::getByCode('REGLES');
+        $texte->setTexte(rawurldecode($_POST['regles']));
+        $texte->save();
         echo json_encode($ret);
     }
 

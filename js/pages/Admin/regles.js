@@ -1,7 +1,7 @@
 $(document).ready(function() {
     CKEDITOR.replace( 'regles' );
 
-    $('.btEnvoyer').on('click', function (e) {
+    $('.btEnvoyerRegles').on('click', function (e) {
         $.ajax({
             type: "POST",
             url: BASE_URL + '/index.php?page=Admin&action=modifRegles',
