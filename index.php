@@ -21,6 +21,7 @@ if(!empty($_GET['action']) && preg_match('#^[a-zA-Z]+$#',$_GET['action'])) {
 
 require_once(dirname(__FILE__).'/models/Conf.php');
 Conf::initCommon(dirname(__FILE__).'/common.ini');
+Conf::initPath(dirname(__FILE__).'/path.ini');
 require_once(Conf::common()['path']['commonClasses'].'/bb/inc.php');
 require_once(Conf::common()['path']['commonClasses'].'/menu/inc.php');
 require_once(Conf::common()['path']['commonClasses'].'/carte/inc.php');

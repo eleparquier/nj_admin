@@ -16,10 +16,10 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript">
-        var BASE_URL = '<?php echo $BASE_URL; ?>';
-        var JS_URL = '<?php echo $JS_URL; ?>';
-        var CSS_URL = '<?php echo $CSS_URL; ?>';
-        var IMAGES_URL = '<?php echo $IMAGES_URL; ?>';
+        var BASE_URL = '<?php echo $ADMIN_BASE_URL; ?>';
+        var JS_URL = '<?php echo $ADMIN_BASE_URL; ?>';
+        var CSS_URL = '<?php echo $ADMIN_BASE_URL; ?>';
+        var IMAGES_URL = '<?php echo $ADMIN_BASE_URL; ?>';
     </script>
 </head>
 <body>

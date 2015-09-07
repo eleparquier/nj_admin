@@ -7,8 +7,6 @@
 */
 namespace fr\gilman\nj;
 
-require_once(dirname(__FILE__).'/Controller.php');
-
 class Admin extends Controller {
 
     public function index()
@@ -19,21 +17,37 @@ class Admin extends Controller {
 
     public function moderation(){
         $this->getMenu()->setAdmin('moderation');
+        if(!$this->checkDroit(Droit::ADMIN)) {
+            $this->error("Vous devez être connecté pour voir cette page");
+            return;
+        }
         $this->display('pages/Admin/Moderation.php');
     }
 
     public function parties(){
         $this->getMenu()->setAdmin('parties');
+        if(!$this->checkDroit(Droit::ADMIN)) {
+            $this->error("Vous devez être connecté pour voir cette page");
+            return;
+        }
         $this->display('pages/Admin/Parties.php');
     }
 
     public function utilisateurs(){
         $this->getMenu()->setAdmin('utilisateurs');
+        if(!$this->checkDroit(Droit::ADMIN)) {
+            $this->error("Vous devez être connecté pour voir cette page");
+            return;
+        }
         $this->display('pages/Admin/Utilisateurs.php');
     }
 
     public function regles(){
         $this->getMenu()->setAdmin('regles');
+        if(!$this->checkDroit(Droit::ADMIN)) {
+            $this->error("Vous devez être connecté pour voir cette page");
+            return;
+        }
         $this->display('pages/Admin/Regles.php');
     }
 
@@ -54,6 +68,9 @@ class Admin extends Controller {
             if(is_null($utilisateur)) {
                 $ret['error'] = 4;
                 $ret['errorMsg'] = 'Utilisateur inconnu';
+            } elseif(!$utilisateur->getDroitGroupes()->droitExists(Droit::ADMIN)) {
+                $ret['error'] = 5;
+                $ret['errorMsg'] = 'Utilisateur non admin';
             } else {
                 $session = $utilisateur->createSession();
                 $session->setTimeSession(time());
@@ -61,6 +78,16 @@ class Admin extends Controller {
                 $session->save();
                 setcookie('token',$session->getToken(),time()+(Conf::common()['env']['sessionTTL']*3600));
             }
+        }
+        echo json_encode($ret);
+    }
+
+    public function modifRegles()
+    {
+        $ret = array('error'=>0, 'errorMsg'=>'');
+        if(!$this->checkDroit(Droit::ADMIN)) {
+            $ret['error'] = 1;
+            $ret['errorMsg'] = 'Utilisateur non admin';
         }
         echo json_encode($ret);
     }

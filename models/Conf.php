@@ -17,6 +17,11 @@ class Conf
     private static $common = null;
 
     /**
+     * @var array
+     */
+    private static $path = null;
+
+    /**
      * @return string
      */
     public static function common(){
@@ -30,6 +35,23 @@ class Conf
     public static function initCommon($path){
         if(is_null(self::$common)) {
             self::$common = parse_ini_file($path,true);
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public static function path(){
+        return self::$path;
+    }
+
+    /**
+     * @param string $path
+     * @return void
+     */
+    public static function initPath($path){
+        if(is_null(self::$path)) {
+            self::$path = parse_ini_file($path,true);
         }
     }
 }

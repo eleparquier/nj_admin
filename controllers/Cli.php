@@ -7,8 +7,6 @@
  */
 namespace fr\gilman\nj;
 
-require_once(dirname(__FILE__).'/Controller.php');
-
 class Cli extends Controller {
 
     public static function genererPartie()
