@@ -100,4 +100,42 @@ class Admin extends Controller {
         echo json_encode($ret);
     }
 
+    public function uploadImageRegles()
+    {
+        $ret = array(
+            'uploaded' => 0,
+            'filename' => '',
+            'url' => ''
+        );
+
+        if (!isset($_FILES['upload'])) {
+            $ret['error'] = "Pas de fichier envoyé";
+            echo json_encode($ret);
+            return;
+        }
+
+        $tmp_name = $_FILES["upload"]["tmp_name"];
+        $segments = explode('.', $_FILES["upload"]["name"]);
+        $extension = $segments[count($segments) - 1];
+        $exts = array("gif", "jpeg", "jpg", "png");
+        if (!in_array($extension, $exts)) {
+            $ret['error'] = "Le fichier doit être dans les extensions suivantes : " . print_r($exts, true);
+            echo json_encode($ret);
+            return;
+        }
+
+        $newName = md5(time() . rand(1, 1000000)) . '.' . $extension;
+        $path = Conf::path()['includes']['uploadImagesRegles'] . '/' . $newName;
+        if (!move_uploaded_file($_FILES["upload"]["tmp_name"], $path)) {
+            $ret['error'] = "Impossible d'enregistrer le fichier. Vérifier les droits sur le serveur";
+            echo json_encode($ret);
+            return;
+        }
+
+        $ret['uploaded'] = 1;
+        $ret['filename'] = $newName;
+        $ret['url'] = Conf::common()['urlAdmin']['images'] . '/' . Conf::path()['includes']['uploadImagesReglesURLRelative'] . '/' . $newName;
+
+        echo json_encode($ret);
+    }
 }
