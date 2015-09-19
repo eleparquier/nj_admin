@@ -83,6 +83,14 @@ class Admin extends Controller {
         echo json_encode($ret);
     }
 
+    public function deco()
+    {
+        setcookie('token','',0);
+        SessionBusiness::getCookieSession()->delete();
+        header('Location: '.Conf::common()['urlAdmin']['base']);
+        exit();
+    }
+
     public function modifRegles()
     {
         $ret = array('error'=>0, 'errorMsg'=>'');
