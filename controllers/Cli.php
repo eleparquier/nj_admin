@@ -15,7 +15,7 @@ class Cli extends Controller {
         $partie->setNom('manux');
         $partie->setLargeur(30);
         $partie->setHauteur(20);
-        $partie->setNbGermes(rand(1,3));
+        $partie->setNbGermes(rand(3,5));
         $partie->setAltMin(10);
         $partie->setAltMax(16);
         $partie->setCoefGaussMinGermes(1);
