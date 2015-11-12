@@ -12,6 +12,7 @@ class Cli extends Controller {
     public static function genererPartie()
     {
         $partie = new Partie();
+        $partie->setPort($partie->getPortLibre());
         $partie->setNom('manux');
         $partie->setLargeur(30);
         $partie->setHauteur(20);
@@ -29,5 +30,6 @@ class Cli extends Controller {
         $partie->setOuverte(1);
         $partie->save();
         $partie->genererHexas();
+
     }
 }
